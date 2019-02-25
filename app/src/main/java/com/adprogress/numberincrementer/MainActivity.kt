@@ -5,28 +5,25 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    var numberCounter = 0
+
+    fun reset(view: View) {
+        numberCounter = 0
+        numberTextView.text = "Number is: $numberCounter"
+    }
+
+    fun addOne(view: View) {
+        numberCounter += 1
+        numberTextView.text = "Number is: $numberCounter"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var incrNumber = 0
-
-        val numberTextView = findViewById<TextView>(R.id.numberTextView)
-//        numberTextView.setText("HELLO BELLO!")
-
-        val resetButton = findViewById<Button>(R.id.resetButton)
-        resetButton.setOnClickListener(View.OnClickListener {
-            incrNumber = 0
-            numberTextView.setText("Number is: $incrNumber")
-        })
-
-        val incrementButton = findViewById<Button>(R.id.incrementButton)
-        incrementButton.setOnClickListener(View.OnClickListener {
-            incrNumber += 1
-            numberTextView.setText("Number is: $incrNumber")
-        })
     }
 }
